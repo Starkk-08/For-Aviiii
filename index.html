@@ -14,11 +14,15 @@
 
 body{
     min-height:100vh;
-    font-family: Georgia, serif;
+    font-family:Georgia,serif;
     background:linear-gradient(135deg,#fff1f5,#fce4ec,#fff8fa);
     color:#4a2632;
     overflow-x:hidden;
 }
+
+/* =========================
+   SCREENS
+========================= */
 
 .screen{
     min-height:100vh;
@@ -27,16 +31,17 @@ body{
     justify-content:center;
     padding:25px;
     text-align:center;
-    animation:fade .6s ease;
 }
 
 .screen.active{
     display:flex;
+    animation:screenEnter .75s cubic-bezier(.22,1,.36,1);
 }
 
 .card{
     width:min(650px,95vw);
     padding:40px 25px;
+    animation:cardFloatIn .8s cubic-bezier(.22,1,.36,1);
 }
 
 h1{
@@ -54,6 +59,11 @@ p{
     line-height:1.8;
 }
 
+
+/* =========================
+   BUTTONS
+========================= */
+
 button{
     border:none;
     padding:14px 22px;
@@ -64,11 +74,19 @@ button{
     font-size:1rem;
     cursor:pointer;
     box-shadow:0 8px 25px rgba(90,30,50,.12);
-    transition:.25s;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
 }
 
 button:hover{
-    transform:translateY(-3px) scale(1.02);
+    transform:translateY(-4px) scale(1.025);
+    box-shadow:0 12px 30px rgba(90,30,50,.18);
+}
+
+button:active{
+    transform:scale(.94);
 }
 
 .primary{
@@ -76,15 +94,26 @@ button:hover{
     color:white;
 }
 
+
+/* =========================
+   HEART REVEALS
+========================= */
+
 .heart{
     font-size:4rem;
     cursor:pointer;
     margin:15px auto;
-    transition:.3s;
+    width:max-content;
+    transition:transform .3s ease;
+    animation:heartBreath 2s ease-in-out infinite;
 }
 
 .heart:hover{
-    transform:scale(1.15);
+    transform:scale(1.18);
+}
+
+.heart:active{
+    animation:heartTap .45s ease;
 }
 
 .reveal{
@@ -96,13 +125,29 @@ button:hover{
     line-height:1.7;
 }
 
+.reveal.show{
+    display:block;
+    animation:revealIn .55s cubic-bezier(.22,1,.36,1);
+}
+
+
+/* =========================
+   APOLOGY PAPER
+========================= */
+
 .paper{
     background:#fffaf0;
     padding:35px 28px;
     border-radius:5px;
     box-shadow:0 15px 40px rgba(60,20,30,.15);
     transform:rotate(-1deg);
+    animation:paperIn 1s cubic-bezier(.22,1,.36,1);
 }
+
+
+/* =========================
+   OPTIONS
+========================= */
 
 .options{
     display:flex;
@@ -116,6 +161,11 @@ button:hover{
     min-width:220px;
 }
 
+
+/* =========================
+   MODAL
+========================= */
+
 .modal{
     position:fixed;
     inset:0;
@@ -125,10 +175,12 @@ button:hover{
     justify-content:center;
     padding:20px;
     z-index:10;
+    backdrop-filter:blur(5px);
 }
 
 .modal.show{
     display:flex;
+    animation:overlayIn .3s ease;
 }
 
 .modalbox{
@@ -137,13 +189,22 @@ button:hover{
     padding:35px 25px;
     border-radius:25px;
     box-shadow:0 20px 60px rgba(0,0,0,.25);
-    animation:pop .35s ease;
+    animation:modalIn .5s cubic-bezier(.22,1,.36,1);
 }
 
 .songButton{
     font-size:1.15rem;
     padding:17px 28px;
 }
+
+.songButton:hover{
+    box-shadow:0 0 30px rgba(113,57,76,.3);
+}
+
+
+/* =========================
+   FINAL BUTTONS
+========================= */
 
 .finalButtons{
     display:flex;
@@ -157,29 +218,233 @@ button:hover{
     margin-top:15px;
 }
 
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
 .floating{
     position:fixed;
     pointer-events:none;
-    animation:float 6s linear infinite;
     opacity:.35;
+    z-index:0;
+    animation:float 8s linear infinite;
 }
 
-@keyframes fade{
-    from{opacity:0;transform:translateY(15px)}
-    to{opacity:1;transform:translateY(0)}
+
+/* =========================
+   EFFECT ELEMENTS
+========================= */
+
+.sparkle{
+    position:fixed;
+    pointer-events:none;
+    z-index:100;
+    font-size:20px;
+    animation:sparkleOut .9s ease forwards;
 }
 
-@keyframes pop{
-    from{transform:scale(.85);opacity:0}
-    to{transform:scale(1);opacity:1}
+.confetti{
+    position:fixed;
+    pointer-events:none;
+    z-index:100;
+    font-size:22px;
+    animation:confettiFall 1.8s ease-out forwards;
 }
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes screenEnter{
+
+    0%{
+        opacity:0;
+        transform:translateY(28px) scale(.98);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+
+@keyframes cardFloatIn{
+
+    0%{
+        opacity:0;
+        transform:translateY(22px);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+@keyframes heartBreath{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.07);
+    }
+}
+
+
+@keyframes heartTap{
+
+    0%{
+        transform:scale(1);
+    }
+
+    40%{
+        transform:scale(1.35);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+
+@keyframes revealIn{
+
+    0%{
+        opacity:0;
+        transform:translateY(-10px) scale(.96);
+    }
+
+    60%{
+        transform:translateY(2px) scale(1.01);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+
+@keyframes paperIn{
+
+    0%{
+        opacity:0;
+        transform:translateY(35px) rotate(-5deg) scale(.95);
+    }
+
+    70%{
+        transform:translateY(-4px) rotate(-1.5deg) scale(1.01);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) rotate(-1deg) scale(1);
+    }
+}
+
+
+@keyframes overlayIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+
+@keyframes modalIn{
+
+    0%{
+        opacity:0;
+        transform:scale(.82) translateY(25px) rotate(-2deg);
+    }
+
+    70%{
+        transform:scale(1.02) translateY(-3px) rotate(.5deg);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1) translateY(0) rotate(0);
+    }
+}
+
 
 @keyframes float{
-    from{
-        transform:translateY(100vh) rotate(0deg);
+
+    0%{
+        transform:translateY(110vh) rotate(0deg) scale(.8);
+        opacity:0;
     }
-    to{
-        transform:translateY(-120px) rotate(360deg);
+
+    10%{
+        opacity:.35;
+    }
+
+    50%{
+        transform:translateY(45vh) rotate(180deg) scale(1);
+    }
+
+    90%{
+        opacity:.35;
+    }
+
+    100%{
+        transform:translateY(-120px) rotate(360deg) scale(.8);
+        opacity:0;
+    }
+}
+
+
+@keyframes sparkleOut{
+
+    0%{
+        opacity:1;
+        transform:translate(0,0) scale(.5) rotate(0);
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(var(--x),var(--y)) scale(1.4) rotate(180deg);
+    }
+}
+
+
+@keyframes confettiFall{
+
+    0%{
+        opacity:1;
+        transform:translate(0,0) rotate(0deg) scale(.7);
+    }
+
+    100%{
+        opacity:0;
+        transform:
+            translate(var(--x),var(--y))
+            rotate(500deg)
+            scale(1.1);
+    }
+}
+
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
     }
 }
 </style>
@@ -425,48 +690,217 @@ okay okay ♡
 
 <script>
 
+/* =========================
+   SONG
+========================= */
+
 const SONG_URL =
 "https://youtube.com/shorts/1E0hIsVahbk?si=JPuFs1hSfPERfNw_";
 
 
+/* =========================
+   SOFT SOUND EFFECT SYSTEM
+   No audio files required.
+========================= */
+
+let audioContext = null;
+
+
+function getAudioContext(){
+
+    if(!audioContext){
+
+        audioContext =
+            new (window.AudioContext ||
+            window.webkitAudioContext)();
+
+    }
+
+    if(audioContext.state === "suspended"){
+        audioContext.resume();
+    }
+
+    return audioContext;
+}
+
+
+function playTone(
+    frequency,
+    duration = 0.08,
+    volume = 0.035,
+    type = "sine"
+){
+
+    try{
+
+        const ctx = getAudioContext();
+
+        const oscillator =
+            ctx.createOscillator();
+
+        const gain =
+            ctx.createGain();
+
+        oscillator.type = type;
+
+        oscillator.frequency.setValueAtTime(
+            frequency,
+            ctx.currentTime
+        );
+
+        gain.gain.setValueAtTime(
+            0.0001,
+            ctx.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            volume,
+            ctx.currentTime + 0.01
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            ctx.currentTime + duration
+        );
+
+        oscillator.connect(gain);
+        gain.connect(ctx.destination);
+
+        oscillator.start();
+        oscillator.stop(
+            ctx.currentTime + duration + 0.02
+        );
+
+    }catch(e){
+
+        /* Sound is optional.
+           Website continues normally if unavailable. */
+
+    }
+}
+
+
+function clickSound(){
+
+    playTone(520,0.07,0.025,"sine");
+
+}
+
+
+function revealSound(){
+
+    playTone(660,0.08,0.03,"sine");
+
+    setTimeout(()=>{
+        playTone(880,0.12,0.025,"sine");
+    },70);
+
+}
+
+
+function modalSound(){
+
+    playTone(580,0.09,0.025,"sine");
+
+}
+
+
+function finalSound(){
+
+    playTone(523,0.1,0.03,"sine");
+
+    setTimeout(()=>{
+        playTone(659,0.1,0.03,"sine");
+    },90);
+
+    setTimeout(()=>{
+        playTone(784,0.16,0.035,"sine");
+    },180);
+
+}
+
+
+/* =========================
+   SCREEN NAVIGATION
+========================= */
+
 function nextScreen(number){
+
+    clickSound();
 
     document.querySelectorAll(".screen")
     .forEach(s => s.classList.remove("active"));
 
-    document.getElementById("screen"+number)
-    .classList.add("active");
+    const next =
+        document.getElementById("screen"+number);
+
+    next.classList.add("active");
 
     window.scrollTo({
         top:0,
         behavior:"smooth"
     });
+
 }
 
+
+/* =========================
+   HEART REVEALS
+========================= */
 
 function reveal(number){
 
-    const box = document.getElementById("r"+number);
+    revealSound();
 
-    if(box.style.display === "block"){
-        box.style.display = "none";
+    const box =
+        document.getElementById("r"+number);
+
+    if(box.classList.contains("show")){
+
+        box.classList.remove("show");
+
+        setTimeout(()=>{
+            box.style.display = "none";
+        },300);
+
     }else{
+
         box.style.display = "block";
+
+        requestAnimationFrame(()=>{
+            box.classList.add("show");
+        });
+
+        createSparkles();
     }
+
 }
 
 
+/* =========================
+   MODALS
+========================= */
+
 function openModal(type){
 
-    const title = document.getElementById("modalTitle");
-    const text = document.getElementById("modalText");
-    const action = document.getElementById("modalAction");
+    modalSound();
+
+    const title =
+        document.getElementById("modalTitle");
+
+    const text =
+        document.getElementById("modalText");
+
+    const action =
+        document.getElementById("modalAction");
 
     action.innerHTML = "";
 
+
     if(type === "memory"){
 
-        title.innerHTML = "🌷 a tiny memory";
+        title.innerHTML =
+        "🌷 a tiny memory";
 
         text.innerHTML =
         "Some memories stay special not because anything huge happened, but because it was us. I have a stupidly large collection of those. ♡";
@@ -476,7 +910,8 @@ function openModal(type){
 
     if(type === "song"){
 
-        title.innerHTML = "🎧 this one's for you";
+        title.innerHTML =
+        "🎧 this one's for you";
 
         text.innerHTML =
         "Rakh Lo Tum Chhupake — because sometimes a song can say the thing I can't quite say without turning it into another essay. 😭";
@@ -493,7 +928,8 @@ function openModal(type){
 
     if(type === "promise"){
 
-        title.innerHTML = "🫶 one promise";
+        title.innerHTML =
+        "🫶 one promise";
 
         text.innerHTML =
         "I won't ask you to measure my love by how dramatic my gestures become when I'm scared of losing you. I want you to feel it in the ordinary days too.";
@@ -503,7 +939,8 @@ function openModal(type){
 
     if(type === "stupid"){
 
-        title.innerHTML = "😭 important scientific discovery";
+        title.innerHTML =
+        "😭 important scientific discovery";
 
         text.innerHTML =
         "You are illegally cute. I have submitted zero paperwork for this and yet the evidence is overwhelming.";
@@ -513,19 +950,28 @@ function openModal(type){
 
     if(type === "compliment"){
 
-        title.innerHTML = "✨ unnecessarily specific";
+        title.innerHTML =
+        "✨ unnecessarily specific";
 
         text.innerHTML =
         "There is something about the way you switch from cute-chaotic to serious in half a second that should honestly be studied by scientists.";
 
     }
 
+
     document.getElementById("modal")
     .classList.add("show");
+
 }
 
 
+/* =========================
+   CLOSE MODAL
+========================= */
+
 function closeModal(){
+
+    clickSound();
 
     document.getElementById("modal")
     .classList.remove("show");
@@ -533,20 +979,54 @@ function closeModal(){
 }
 
 
+/* =========================
+   SONG
+========================= */
+
 function playSong(){
 
-    window.open(
-        SONG_URL,
-        "_blank",
-        "noopener,noreferrer"
-    );
+    playTone(784,0.12,0.035,"sine");
+
+    const button =
+        document.querySelector(".songButton");
+
+    if(button){
+
+        button.innerHTML =
+        "🎧 opening it... ♡";
+
+        button.style.transform =
+        "scale(1.06)";
+
+    }
+
+    createSparkles();
+
+    setTimeout(()=>{
+
+        window.open(
+            SONG_URL,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+    },450);
 
 }
 
 
+/* =========================
+   FINAL CHOICES
+========================= */
+
 function finalChoice(choice){
 
-    const screen = document.getElementById("screen6");
+    finalSound();
+
+    createConfetti();
+
+    const screen =
+        document.getElementById("screen6");
 
     if(choice === "forgive"){
 
@@ -617,6 +1097,101 @@ function finalChoice(choice){
         I missed you.
         </p>
         `;
+
+    }
+
+}
+
+
+/* =========================
+   LITTLE SPARKLES
+========================= */
+
+function createSparkles(){
+
+    const symbols = ["♡","♥","✦","✨"];
+
+    for(let i=0;i<8;i++){
+
+        const sparkle =
+            document.createElement("div");
+
+        sparkle.className = "sparkle";
+
+        sparkle.innerText =
+            symbols[Math.floor(
+                Math.random()*symbols.length
+            )];
+
+        sparkle.style.left =
+            (45 + Math.random()*10) + "%";
+
+        sparkle.style.top =
+            (45 + Math.random()*10) + "%";
+
+        sparkle.style.setProperty(
+            "--x",
+            ((Math.random()-.5)*220)+"px"
+        );
+
+        sparkle.style.setProperty(
+            "--y",
+            ((Math.random()-.5)*220)+"px"
+        );
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(()=>{
+            sparkle.remove();
+        },1000);
+
+    }
+
+}
+
+
+/* =========================
+   FINAL CONFETTI / HEARTS
+========================= */
+
+function createConfetti(){
+
+    const symbols =
+        ["♡","♥","💕","✨","🥹","🫶"];
+
+    for(let i=0;i<22;i++){
+
+        const piece =
+            document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.innerText =
+            symbols[Math.floor(
+                Math.random()*symbols.length
+            )];
+
+        piece.style.left =
+            (45 + Math.random()*10) + "%";
+
+        piece.style.top =
+            (40 + Math.random()*10) + "%";
+
+        piece.style.setProperty(
+            "--x",
+            ((Math.random()-.5)*500)+"px"
+        );
+
+        piece.style.setProperty(
+            "--y",
+            (100 + Math.random()*500)+"px"
+        );
+
+        document.body.appendChild(piece);
+
+        setTimeout(()=>{
+            piece.remove();
+        },1900);
 
     }
 
