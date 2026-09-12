@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#fff5f7">
+  <meta name="description" content="A tiny little corner of the internet made with love.">
+
+  <title>for you ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Floating background hearts -->
+  <div class="background-hearts" aria-hidden="true">
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+  </div>
+
+
+  <!-- =========================
+       SCREEN 1
+  ========================== -->
+
+  <main id="app">
+
+    <section class="screen active" id="screen1">
+
+      <div class="eyebrow">
+        a tiny internet corner
+      </div>
+
+      <div class="main-heart">♡</div>
+
+      <h1>
+        heyyyyy<br>
+        <span>cutiepieeee</span> 🥹
+      </h1>
+
+      <p class="subtitle">
+        You so cute, it's actually getting<br>
+        a little unfair now.
+      </p>
+
+      <p class="tiny-text">
+        do you even know how cute you are?
+      </p>
+
+      <button class="primary-btn" onclick="goTo('screen2')">
+        I know something 😭
+        <span>→</span>
+      </button>
+
+    </section>
+
+
+    <!-- =========================
+         SCREEN 2
+    ========================== -->
+
+    <section class="screen" id="screen2">
+
+      <div class="small-label">
+        okay, listen...
+      </div>
+
+      <h2>
+        I made a little<br>
+        <span>something</span> for you.
+      </h2>
+
+      <p class="body-text">
+        Nothing complicated.<br>
+        Just a few things I've wanted<br>
+        to say properly.
+      </p>
+
+      <div class="mini-note">
+        <span>♡</span>
+        made specifically for you
+      </div>
+
+      <button class="primary-btn" onclick="goTo('screen3')">
+        open the little things
+        <span>→</span>
+      </button>
+
+    </section>
+
+
+    <!-- =========================
+         SCREEN 3 — REVEALS
+    ========================== -->
+
+    <section class="screen" id="screen3">
+
+      <div class="small-label">
+        tap the little hearts
+      </div>
+
+      <h2>
+        little things I<br>
+        <span>notice about you</span>
+      </h2>
+
+      <div class="reveal-grid">
+
+        <button class="reveal-card" onclick="reveal(this)">
+          <div class="card-heart">♡</div>
+          <div class="tap-text">tap to reveal</div>
+
+          <div class="revealed-text">
+            Your smile. Obviously.
+            But also those tiny expressions
+            you make when you think nobody
+            is paying attention.
+
+            <br><br>
+
+            I notice. 😭
+          </div>
+        </button>
+
+
+        <button class="reveal-card" onclick="reveal(this)">
+          <div class="card-heart">♡</div>
+          <div class="tap-text">tap to reveal</div>
+
+          <div class="revealed-text">
+            The completely random conversations
+            that technically had absolutely no
+            purpose...
+
+            <br><br>
+
+            and somehow became some of my
+            favourite conversations.
+          </div>
+        </button>
+
+
+        <button class="reveal-card" onclick="reveal(this)">
+          <div class="card-heart">♡</div>
+          <div class="tap-text">tap to reveal</div>
+
+          <div class="revealed-text">
+            How you can go from cute-chaotic
+            to completely serious in approximately
+            0.4 seconds.
+
+            <br><br>
+
+            Honestly, scientists should study you.
+          </div>
+        </button>
+
+      </div>
+
+      <button class="text-btn" onclick="goTo('screen4')">
+        there's one more thing →
+      </button>
+
+    </section>
+
+
+    <!-- =========================
+         SCREEN 4 — LETTER
+    ========================== -->
+
+    <section class="screen letter-screen" id="screen4">
+
+      <div class="small-label">
+        okay... this one's serious
+      </div>
+
+      <div class="letter">
+
+        <div class="letter-decoration">♡</div>
+
+        <h2>
+          I'm sorry.
+        </h2>
+
+        <p>
+          I know an “I'm sorry” doesn't magically
+          undo everything.
+        </p>
+
+        <p>
+          I know there are things I've done that
+          made you feel hurt, unloved, unheard
+          or unsure of me.
+        </p>
+
+        <p>
+          And I don't want this little website
+          to pretend that a few cute words can
+          erase any of that.
+        </p>
+
+        <p>
+          I just wanted to make you something
+          that came from me.
+        </p>
+
+        <p>
+          I want to become someone whose actions
+          make you feel cared for on ordinary days
+          too — not someone who only remembers
+          how to show it when things go wrong.
+        </p>
+
+        <p>
+          You matter to me.
+          More than I sometimes know how to
+          properly show.
+        </p>
+
+        <div class="signature">
+          — me, trying to be a little less
+          stupid every day 😭
+        </div>
+
+      </div>
+
+      <button class="primary-btn" onclick="goTo('screen5')">
+        okay enough emotions 😭
+        <span>→</span>
+      </button>
+
+    </section>
+
+
+    <!-- =========================
+         SCREEN 5 — MENU
+    ========================== -->
+
+    <section class="screen" id="screen5">
+
+      <div class="small-label">
+        choose your little thing
+      </div>
+
+      <h2>
+        What do you<br>
+        <span>want to open?</span>
+      </h2>
+
+      <div class="choice-list">
+
+        <button class="choice" onclick="openModal('memory')">
+          <span class="choice-icon">🌷</span>
+
+          <span class="choice-content">
+            <strong>a tiny memory</strong>
+            <small>something I still remember</small>
+          </span>
+
+          <span class="arrow">→</span>
+        </button>
+
+
+        <button class="choice" onclick="openModal('song')">
+          <span class="choice-icon">🎧</span>
+
+          <span class="choice-content">
+            <strong>a song for you</strong>
+            <small>because words are sometimes difficult</small>
+          </span>
+
+          <span class="arrow">→</span>
+        </button>
+
+
+        <button class="choice" onclick="openModal('promise')">
+          <span class="choice-icon">🫶</span>
+
+          <span class="choice-content">
+            <strong>one promise</strong>
+            <small>not a dramatic one</small>
+          </span>
+
+          <span class="arrow">→</span>
+        </button>
+
+
+        <button class="choice" onclick="openModal('stupid')">
+          <span class="choice-icon">😭</span>
+
+          <span class="choice-content">
+            <strong>something stupid</strong>
+            <small>because obviously</small>
+          </span>
+
+          <span class="arrow">→</span>
+        </button>
+
+
+        <button class="choice" onclick="openModal('compliment')">
+          <span class="choice-icon">✨</span>
+
+          <span class="choice-content">
+            <strong>an unnecessarily specific compliment</strong>
+            <small>you've been warned</small>
+          </span>
+
+          <span class="arrow">→</span>
+        </button>
+
+      </div>
+
+      <p class="footer-note">
+        made with an unreasonable amount of affection ♡
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       MODAL
+  ========================== -->
+
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+
+    <div class="modal" onclick="event.stopPropagation()">
+
+      <button class="close-btn" onclick="closeModal()">
+        ×
+      </button>
+
+      <div class="modal-icon" id="modalIcon">
+        ♡
+      </div>
+
+      <div class="small-label" id="modalLabel">
+        little thing
+      </div>
+
+      <h3 id="modalTitle">
+        title
+      </h3>
+
+      <p id="modalText">
+        text
+      </p>
+
+      <button class="modal-close" onclick="closeModal()">
+        okayyy 😭
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /* =========================
+       SCREEN NAVIGATION
+    ========================== */
+
+    function goTo(screenId) {
+
+      const screens = document.querySelectorAll('.screen');
+
+      screens.forEach(screen => {
+        screen.classList.remove('active');
+      });
+
+      const nextScreen = document.getElementById(screenId);
+
+      nextScreen.classList.add('active');
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
+      createBurst();
+    }
+
+
+    /* =========================
+       HEART REVEALS
+    ========================== */
+
+    function reveal(card) {
+
+      if (card.classList.contains('revealed')) return;
+
+      card.classList.add('revealed');
+
+      createBurst(card);
+    }
+
+
+    /* =========================
+       MODAL CONTENT
+    ========================== */
+
+    const modalData = {
+
+      memory: {
+        icon: "🌷",
+        label: "one of those memories",
+        title: "Some memories are weirdly permanent.",
+        text:
+          "Some memories stay special not because anything huge happened, but because it was us. The kind of ordinary little moments that somehow get stuck in your head forever."
+      },
+
+      song: {
+        icon: "🎧",
+        label: "press play in your head",
+        title: "Rakh Lo Tum Chhupake",
+        text:
+          "Because sometimes a song can say something softly without turning it into another giant essay. And yes, I absolutely overthought which song to put here. 😭"
+      },
+
+      promise: {
+        icon: "🫶",
+        label: "this one matters",
+        title: "I want the ordinary days to count.",
+        text:
+          "I don't want my efforts to appear only when I'm scared of losing you. I want you to feel cared for in the boring, normal, everyday moments too."
+      },
+
+      stupid: {
+        icon: "😭",
+        label: "important scientific information",
+        title: "You are illegally cute.",
+        text:
+          "I have submitted zero paperwork for this accusation. Nevertheless, the evidence is overwhelming and I will not be taking questions at this time."
+      },
+
+      compliment: {
+        icon: "✨",
+        label: "unnecessarily specific",
+        title: "You have this thing...",
+        text:
+          "There is something about the way you switch from cute-chaotic to completely serious in half a second that should honestly be studied by scientists."
+      }
+
+    };
+
+
+    function openModal(type) {
+
+      const data = modalData[type];
+
+      document.getElementById('modalIcon').textContent = data.icon;
+      document.getElementById('modalLabel').textContent = data.label;
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalText').textContent = data.text;
+
+      document.getElementById('modalOverlay').classList.add('show');
+
+      document.body.classList.add('modal-open');
+    }
+
+
+    function closeModal(event) {
+
+      if (event && event.target !== event.currentTarget) return;
+
+      document.getElementById('modalOverlay').classList.remove('show');
+
+      document.body.classList.remove('modal-open');
+    }
+
+
+    /* =========================
+       LITTLE HEART BURST
+    ========================== */
+
+    function createBurst(element) {
+
+      const container = document.body;
+
+      for (let i = 0; i < 7; i++) {
+
+        const heart = document.createElement('span');
+
+        heart.className = 'burst-heart';
+
+        heart.textContent = Math.random() > 0.5 ? '♡' : '♥';
+
+        heart.style.left =
+          (window.innerWidth / 2 + (Math.random() * 120 - 60)) + 'px';
+
+        heart.style.top =
+          (window.innerHeight / 2 + (Math.random() * 80 - 40)) + 'px';
+
+        heart.style.setProperty(
+          '--x',
+          (Math.random() * 160 - 80) + 'px'
+        );
+
+        heart.style.setProperty(
+          '--y',
+          (Math.random() * -180 - 40) + 'px'
+        );
+
+        container.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 1100);
+      }
+    }
+
+
+    /* =========================
+       ESCAPE KEY
+    ========================== */
+
+    document.addEventListener('keydown', function(event) {
+
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
